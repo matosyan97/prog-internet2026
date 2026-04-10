@@ -22,3 +22,17 @@ form.addEventListener('submit', function(event) {
 
 
 });
+
+document.getElementById("btnAlerta").addEventListener("click", function() {
+    alert("Olá! JavaScript funcionando!");
+});
+
+document.getElementById("btnCor").addEventListener("click", function() {
+    document.body.style.backgroundColor = "lightblue";
+});
+
+document.getElementById("btnConteudo").addEventListener("click", function() {
+    document.getElementById("conteudo").innerHTML =
+        "Texto alterado com JavaScript!";
+});
+
