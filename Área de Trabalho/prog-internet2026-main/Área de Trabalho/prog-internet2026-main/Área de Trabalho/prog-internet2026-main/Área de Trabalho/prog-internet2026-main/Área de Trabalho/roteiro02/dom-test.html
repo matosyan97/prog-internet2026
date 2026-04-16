@@ -9,9 +9,26 @@
 
 <body>
     <h1 id="titulo">Olá Mundo!</h1>
-    <button onclick="mudarTexto()">Clique Aqui</button>
-    
+    <button onmousemove="mudarTexto()">Clique Aqui</button>
+
+    <ul id="minhaLista"></ul>
+    <button id="add">Adicionar Item</button>
+
     <script>
+        const lista = document.getElementById("minhaLista");
+        const botao = document.getElementById("add");
+        botao.addEventListener("click", () => {
+            
+            // 1. Criar o elemento
+            const novoItem = document.createElement("li");
+            
+            // 2. Dar conteúdo ao elemento
+            novoItem.innerText = "Novo Item na Lista";
+            
+            // 3. Adicionar na página
+            lista.appendChild(novoItem);
+        });
+
         function mudarTexto() {
             const titulo = document.getElementById("titulo");
             titulo.innerText = "JavaScript funcionando!";
