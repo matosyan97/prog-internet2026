@@ -17,14 +17,24 @@
     <h2 id="contador">0</h2>
     <button id="btnSoma">Contar +1</button>
 
+    <img id="lampada" src="/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/off.png" style="width:100px">
+    <button id="btnInterruptor">Ligar/Desligar</button>
+
     <script>
         const lista = document.getElementById("minhaLista");
         const botao = document.getElementById("add");
         let valor = 0;
         const display = document.getElementById("contador");
         const btnSoma = document.getElementById("btnSoma");
+        const img = document.getElementById("lampada");
+        let acesa = false;
         
-        
+        document.getElementById("btnInterruptor").addEventListener("click", () => {
+            acesa = !acesa;
+            img.src = acesa ? "/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/on.png" : "/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/off.png";
+        });
+
+
         btnSoma.addEventListener("click", () => {
             valor++;
             display.innerText = valor;
