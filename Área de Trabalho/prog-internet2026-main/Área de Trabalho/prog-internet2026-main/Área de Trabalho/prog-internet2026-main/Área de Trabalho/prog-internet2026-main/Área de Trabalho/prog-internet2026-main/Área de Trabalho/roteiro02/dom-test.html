@@ -31,6 +31,16 @@
         Pegue-me!
     </button>
 
+    <div class="box">
+        <h2>7. Jokenpô (Emoji Edition)</h2>
+        <button onclick="jogar('PEDRA')">✊ PEDRA</button>
+        <button onclick="jogar('PAPEL')">✋ PAPEL</button>
+        <button onclick="jogar('TESOURA')">✌️ TESOURA</button>
+        <h3 id="resultadoJogo">Escolha um!</h3>
+    </div>
+
+
+
     <script>
         const lista = document.getElementById("minhaLista");
         const botao = document.getElementById("add");
@@ -97,6 +107,54 @@
             const titulo = document.getElementById("titulo");
             titulo.innerText = "JavaScript funcionando!";
             titulo.style.color = "blue";
+        }
+
+        const opcoes = ['PEDRA', 'PAPEL', 'TESOURA'];
+
+
+
+        function jogar(player) {
+
+
+            const pc = opcoes[Math.floor(Math.random() * 3)];
+
+
+            const res = document.getElementById("resultadoJogo");
+
+
+            if (player === pc) {
+
+
+                res.innerText = `Empate! Ambos escolheram ${pc}`;
+
+
+            } else if (
+
+
+                (player === 'PEDRA' && pc === 'TESOURA') ||
+
+
+                (player === 'PAPEL' && pc === 'PEDRA') ||
+
+
+                (player === 'TESOURA' && pc === 'PAPEL')
+
+
+            ) {
+
+
+                res.innerText = `Você Ganhou! ${player} vence ${pc}`;
+
+
+            } else {
+
+
+                res.innerText = `Você Perdeu! ${pc} vence ${player}`;
+
+
+            }
+
+
         }
     </script>
 </body>
