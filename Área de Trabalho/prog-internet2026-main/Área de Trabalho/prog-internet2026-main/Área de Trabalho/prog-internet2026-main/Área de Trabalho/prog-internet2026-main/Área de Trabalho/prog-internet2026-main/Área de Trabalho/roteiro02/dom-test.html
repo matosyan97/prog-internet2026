@@ -5,32 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+
+
+
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+
+
+        .box { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+
+
+        h2 { color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; }
+
+
+        #fugitivo { position: absolute; transition: all 0.1s; }
+
+
+        .lamp-container { text-align: center; }
+
+
+        img { width: 150px; display: block; margin: 10px auto; }
+
+
+    </style>
 </head>
 
 <body>
-    <h1 id="titulo">Olá Mundo!</h1>
-    <button onmousemove="mudarTexto()">Clique Aqui</button>
+    <div class="box">
+        <h1 id="titulo">Olá Mundo!</h1>
+        <button onmousemove="mudarTexto()">Clique Aqui</button>
+    </div>
+    
+    <div class="box">
+        <ul id="minhaLista"></ul>
+        <button id="add">Adicionar Item</button>
+    </div>
 
-    <ul id="minhaLista"></ul>
-    <button id="add">Adicionar Item</button>
+    <div class="box">
+        <h2 id="contador">0</h2>
+        <button id="btnSoma">Contar +1</button>
+    </div>
 
-    <h2 id="contador">0</h2>
-    <button id="btnSoma">Contar +1</button>
+    <div class="box">
+        <img id="lampada"
+            src="/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/off.png"
+            style="width:100px">
+        <button id="btnInterruptor">Ligar/Desligar</button>
+    </div>
 
-    <img id="lampada"
-        src="/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/off.png"
-        style="width:100px">
-    <button id="btnInterruptor">Ligar/Desligar</button>
+    <div class="box">
+        <input type="number" id="palpite" placeholder="0 a 10">
+        <button id="btnChutar">Chutar!</button>
+        <p id="feedback"></p>
+    </div>
 
-    <input type="number" id="palpite" placeholder="0 a 10">
-    <button id="btnChutar">Chutar!</button>
-    <p id="feedback"></p>
-
-    <p>Erros: <span id="contadorErros">0</span></p>
-    <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
+    <div class="box">
+        <p>Erros: <span id="contadorErros">0</span></p>
+        <button id="fugitivo" style="position: absolute; left: 50%; top: 50%;">
         Pegue-me!
-    </button>
-
+        </button>
+    </div>
+    
     <div class="box">
         <h2>7. Jokenpô (Emoji Edition)</h2>
         <button onclick="jogar('PEDRA')">✊ PEDRA</button>
