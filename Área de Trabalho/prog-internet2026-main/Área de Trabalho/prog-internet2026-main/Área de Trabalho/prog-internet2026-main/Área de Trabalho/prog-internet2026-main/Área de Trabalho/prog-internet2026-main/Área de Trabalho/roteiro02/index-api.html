@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f9; }
+
+
+        .box { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px; }
+
+
+        h2 { color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; }
+
+
+        #fugitivo { position: absolute; transition: all 0.1s; }
+
+
+        .lamp-container { text-align: center; }
+
+
+        img { width: 150px; display: block; margin: 10px auto; }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+    
+    <div class="box">
+
+    </div>
+
+    <div class="box">
+
+    </div>
+
+    <script>
+        const lista = document.getElementById("minhaLista");
+        const botao = document.getElementById("add");
+        let valor = 0;
+        const display = document.getElementById("contador");
+        const btnSoma = document.getElementById("btnSoma");
+        const img = document.getElementById("lampada");
+        let acesa = false;
+        const segredo = Math.floor(Math.random() * 11);
+        const campo = document.getElementById("palpite");
+        const texto = document.getElementById("feedback");
+        const btnChutar = document.getElementById("btnChutar");
+        const btn = document.getElementById("fugitivo");
+        const placar = document.getElementById("contadorErros");
+        let erros = 0;
+
+        btn.addEventListener("mouseover", () => {
+            erros++;
+            placar.innerText = erros;
+            // Mudar posição aleatoriamente
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            btn.style.left = `${ x }px`;
+            btn.style.top = `${ y }px`;
+        });
+        
+        btn.addEventListener("click", () => alert(" Você me pegou!"));
+
+        btnChutar.addEventListener("click", () => {
+            const chute = Number(campo.value);
+            if (chute === segredo) {
+                texto.innerText = " Parabéns! Você acertou!";
+                texto.style.color = "green";
+            } else {
+                texto.innerText = chute > segredo ? "Muito alto!" : "Muito baixo!";
+                texto.style.color = "red";
+            }
+        });
+
+        document.getElementById("btnInterruptor").addEventListener("click", () => {
+            acesa = !acesa;
+            img.src = acesa ? "/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/on.png" : "/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/prog-internet2026-main/Área de Trabalho/roteiro02/assets/img/off.png";
+        });
+
+
+        btnSoma.addEventListener("click", () => {
+            valor++;
+            display.innerText = valor;
+        });
+
+        botao.addEventListener("click", () => {
+
+            // 1. Criar o elemento
+            const novoItem = document.createElement("li");
+
+            // 2. Dar conteúdo ao elemento
+            novoItem.innerText = "Novo Item na Lista";
+
+            // 3. Adicionar na página
+            lista.appendChild(novoItem);
+        });
+
+        function mudarTexto() {
+            const titulo = document.getElementById("titulo");
+            titulo.innerText = "JavaScript funcionando!";
+            titulo.style.color = "blue";
+        }
+
+        const opcoes = ['PEDRA', 'PAPEL', 'TESOURA'];
+
+
+
+        function jogar(player) {
+
+
+            const pc = opcoes[Math.floor(Math.random() * 3)];
+
+
+            const res = document.getElementById("resultadoJogo");
+
+
+            if (player === pc) {
+
+
+                res.innerText = `Empate! Ambos escolheram ${pc}`;
+
+
+            } else if (
+
+
+                (player === 'PEDRA' && pc === 'TESOURA') ||
+
+
+                (player === 'PAPEL' && pc === 'PEDRA') ||
+
+
+                (player === 'TESOURA' && pc === 'PAPEL')
+
+
+            ) {
+
+
+                res.innerText = `Você Ganhou! ${player} vence ${pc}`;
+
+
+            } else {
+
+
+                res.innerText = `Você Perdeu! ${pc} vence ${player}`;
+
+
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
