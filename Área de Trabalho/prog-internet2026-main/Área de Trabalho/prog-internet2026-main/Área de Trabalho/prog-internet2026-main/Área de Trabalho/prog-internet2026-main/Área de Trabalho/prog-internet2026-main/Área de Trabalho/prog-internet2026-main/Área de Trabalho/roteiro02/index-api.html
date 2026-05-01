@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+
+        h2 {
+            color: #003366;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 5px;
+        }
+
+
+        #fugitivo {
+            position: absolute;
+            transition: all 0.1s;
+        }
+
+
+        .lamp-container {
+            text-align: center;
+        }
+
+
+        img {
+            width: 150px;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Oráculo dos conselhos</h2>
+        <button id="btnConselho">Pedir Conselho</button>
+        <p id="textoConselho"></p>
+
+    </div>
+
+    <div class="box">
+        <button id="btnPet">Buscar Pet</button>
+        <img id="fotoPet" src="" style="width: 300px; display: none;">
+
+    </div>
+
+    <div class="box">
+        <h2>Busca CEP</h2>
+        <input type="text" id="inputCep" placeholder="Digite o CEP">
+        <button id="btnBuscarCep">Buscar</button>
+        <p id="resultadoCep"></p>
+    </div>
+
+    <script>
+        const btnConselho = document.getElementById("btnConselho");
+        const textoConselho = document.getElementById("textoConselho");
+
+        btnConselho.addEventListener("click", () => {
+            fetch("https://api.adviceslip.com/advice")
+                .then(response => response.json())
+                .then(data => {
+                    textoConselho.textContent = data.slip.advice;
+                })
+        });
+        //------------------------------------------------------------------------------------
+        const btnPet = document.getElementById("btnPet");
+        const fotoPet = document.getElementById("fotoPet");
+
+        btnPet.addEventListener("click", () => {
+            fetch("https://random.dog/woof.json")
+                .then(response => response.json())
+                .then(data => {
+                    fotoPet.src = data.url;
+                    fotoPet.style.display = "block";
+                })
+        });
+        //------------------------------------------------------------------------------------
+        const cep = document.getElementById("inputCep").value;
+        const btnBuscarCep = document.getElementById("btnBuscarCep");
+        const resultadoCep = document.getElementById("resultadoCep");
+
+        btnBuscarCep.addEventListener("click", () => {
+            const cep = document.getElementById("inputCep").value;
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.erro) {
+                        resultadoCep.textContent = "CEP não encontrado.";
+                    } else {
+                        resultadoCep.textContent = `Endereço: ${data.logradouro}, Bairro: ${data.bairro}, Cidade: ${data.localidade}, Estado: ${data.uf}`;
+                    }
+                })
+        });
+
+    </script>
+</body>
+
+</html>
